@@ -1,0 +1,167 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Le compte est d\u00e9j\u00e0 configur\u00e9",
+            "api_rate_limit_reached": "La limite de requ\u00eates de l'API Tado a \u00e9t\u00e9 atteinte. Veuillez patienter et r\u00e9essayer plus tard.",
+            "cannot_connect": "\u00c9chec de la connexion",
+            "could_not_authenticate": "Impossible de s'authentifier aupr\u00e8s de Tado.",
+            "no_homes": "Il n'y a pas de maisons li\u00e9es \u00e0 ce compte Tado.",
+            "reauth_successful": "La r\u00e9authentification a r\u00e9ussi",
+            "reconfigure_successful": "La reconfiguration a r\u00e9ussi"
+        },
+        "progress": {
+            "wait_for_device": "Pour vous authentifier, ouvrez l'URL suivante et connectez-vous sur Tado\u00a0:\n{url}\nSi le code n'est pas copi\u00e9 automatiquement, collez le code suivant pour autoriser l'int\u00e9gration\u00a0:\n\n```{code}```\n\n\nLa tentative de connexion expirera au bout de cinq minutes."
+        },
+        "step": {
+            "homekit": {
+                "description": "Votre appareil a \u00e9t\u00e9 d\u00e9couvert et doit s'authentifier aupr\u00e8s de Tado. Appuyez sur `Valider` pour d\u00e9marrer le processus d'authentification.",
+                "title": "S'authentifier aupr\u00e8s de Tado"
+            },
+            "reauth_confirm": {
+                "description": "Vous devez vous r\u00e9authentifier aupr\u00e8s de Tado. Appuyez sur `Valider` pour d\u00e9marrer le processus d'authentification.",
+                "title": "S'authentifier aupr\u00e8s de Tado"
+            },
+            "timeout": {
+                "description": "Le processus d'authentification a expir\u00e9. Veuillez r\u00e9essayer."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "connection_state": {
+                "name": "\u00c9tat de connexion"
+            },
+            "early_start": {
+                "name": "D\u00e9marrage anticip\u00e9"
+            },
+            "overlay": {
+                "name": "D\u00e9rogation"
+            }
+        },
+        "climate": {
+            "tado": {
+                "state_attributes": {
+                    "preset_mode": {
+                        "state": {
+                            "auto": "Auto"
+                        }
+                    }
+                }
+            }
+        },
+        "select": {
+            "heating_circuit": {
+                "name": "Circuit de chauffage",
+                "state": {
+                    "no_heating_circuit": "Aucun circuit"
+                }
+            }
+        },
+        "sensor": {
+            "ac": {
+                "name": "AC"
+            },
+            "automatic_geofencing": {
+                "name": "G\u00e9olocalisation automatique"
+            },
+            "geofencing_mode": {
+                "name": "Mode de g\u00e9olocalisation"
+            },
+            "heating": {
+                "name": "Chauffage"
+            },
+            "outdoor_temperature": {
+                "name": "Temp\u00e9rature ext\u00e9rieure"
+            },
+            "solar_percentage": {
+                "name": "Pourcentage solaire"
+            },
+            "tado_mode": {
+                "name": "Mode Tado"
+            },
+            "weather_condition": {
+                "name": "Condition m\u00e9t\u00e9orologique"
+            }
+        },
+        "switch": {
+            "child_lock": {
+                "name": "S\u00e9curit\u00e9 enfant"
+            }
+        }
+    },
+    "issues": {
+        "water_heater_fallback": {
+            "description": "En raison de la prise en charge ajout\u00e9e des entit\u00e9s de chauffe-eau, ces entit\u00e9s peuvent utiliser une d\u00e9rogation diff\u00e9rente. Veuillez configurer les options de d\u00e9rogation de la zone chauffe-eau dans l'entit\u00e9 de l'int\u00e9gration et dans l'application Tado (sous Param\u00e8tres -> Pi\u00e8ces et appareils -> Eau chaude).",
+            "title": "Les entit\u00e9s de chauffe-eau Tado prennent d\u00e9sormais en charge les options de secours"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "fallback": "Choisissez le mode de retour."
+                },
+                "description": "Le mode de retour vous permet de choisir le moment du retour \u00e0 la programmation intelligente depuis votre d\u00e9rogation manuelle de zone. (NEXT_TIME_BLOCK := Modifier au prochain changement de programmation intelligente ; MANUAL := Ne pas modifier jusqu'\u00e0 annulation manuelle ; TADO_DEFAULT := Modifier en fonction de vos param\u00e8tres dans l'application Tado).",
+                "title": "Ajuster les options de Tado."
+            }
+        }
+    },
+    "services": {
+        "add_meter_reading": {
+            "description": "Ajoute un relev\u00e9 de compteur \u00e0 Tado Energy IQ.",
+            "fields": {
+                "config_entry": {
+                    "description": "Entr\u00e9e de configuration \u00e0 laquelle ajouter le relev\u00e9 de compteur.",
+                    "name": "Entr\u00e9e de configuration"
+                },
+                "reading": {
+                    "description": "Relev\u00e9 en m\u00b3 ou kWh sans d\u00e9cimales.",
+                    "name": "Relev\u00e9"
+                }
+            },
+            "name": "Ajouter un relev\u00e9 de compteur"
+        },
+        "set_climate_temperature_offset": {
+            "description": "D\u00e9finit le d\u00e9calage de temp\u00e9rature des entit\u00e9s de climatisation.",
+            "fields": {
+                "offset": {
+                    "description": "D\u00e9calage souhait\u00e9 (en fonction de votre appareil).",
+                    "name": "D\u00e9calage"
+                }
+            },
+            "name": "R\u00e9gler le d\u00e9calage de temp\u00e9rature"
+        },
+        "set_climate_timer": {
+            "description": "Active les entit\u00e9s de climatisation pour une dur\u00e9e d\u00e9termin\u00e9e.",
+            "fields": {
+                "requested_overlay": {
+                    "description": "Choisissez ceci ou \u00ab\u00a0P\u00e9riode\u00a0\u00bb. Permet de choisir une d\u00e9rogation. MANUAL:=D\u00e9rogation jusqu'\u00e0 ce que l'utilisateur la supprime\u00a0; NEXT_TIME_BLOCK:=D\u00e9rogation jusqu'au prochain bloc horaire\u00a0; TADO_DEFAULT:=D\u00e9rogation selon le r\u00e9glage de l'application Tado.",
+                    "name": "D\u00e9rogation"
+                },
+                "temperature": {
+                    "description": "Temp\u00e9rature \u00e0 laquelle l'entit\u00e9 doit \u00eatre r\u00e9gl\u00e9e.",
+                    "name": "Temp\u00e9rature"
+                },
+                "time_period": {
+                    "description": "Choisissez ceci ou \u00ab\u00a0D\u00e9rogation\u00a0\u00bb. D\u00e9finissez la p\u00e9riode du changement si vous souhaitez \u00eatre pr\u00e9cis.",
+                    "name": "P\u00e9riode de temps"
+                }
+            },
+            "name": "R\u00e9gler la minuterie de climatisation"
+        },
+        "set_water_heater_timer": {
+            "description": "Allume le chauffe-eau pour une dur\u00e9e d\u00e9termin\u00e9e.",
+            "fields": {
+                "temperature": {
+                    "description": "Temp\u00e9rature \u00e0 laquelle le chauffage doit \u00eatre r\u00e9gl\u00e9.",
+                    "name": "Temp\u00e9rature"
+                },
+                "time_period": {
+                    "description": "D\u00e9finissez la p\u00e9riode de temps pour le boost.",
+                    "name": "P\u00e9riode de temps"
+                }
+            },
+            "name": "R\u00e9gler la minuterie du chauffe-eau"
+        }
+    }
+}

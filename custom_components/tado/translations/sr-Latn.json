@@ -1,0 +1,167 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Nalog je ve\u0107 pode\u0161en",
+            "api_rate_limit_reached": "Dostignuto je ograni\u010denje Tado API zahteva. Molimo sa\u010dekajte i poku\u0161ajte ponovo kasnije.",
+            "cannot_connect": "Povezivanje nije uspelo",
+            "could_not_authenticate": "Nije mogu\u0107e potvrditi identitet sa Tado.",
+            "no_homes": "Nijedna ku\u0107a nije povezana sa ovim Tado nalogom.",
+            "reauth_successful": "Ponovna prijava je uspe\u0161na",
+            "reconfigure_successful": "Ponovno pode\u0161avanje je uspe\u0161no"
+        },
+        "progress": {
+            "wait_for_device": "Da biste se prijavili, otvorite slede\u0107i URL i prijavite se na Tado:\n{url}  \nAko se kod ne kopira automatski, nalepite slede\u0107i kod da odobrite integraciju:  \n\n``\u201e{code}\u201c``  \n\nPoku\u0161aj prijave \u0107e iste\u0107i nakon pet minuta."
+        },
+        "step": {
+            "homekit": {
+                "description": "Va\u0161 ure\u0111aj je prona\u0111en i potrebno je da se autentifikuje sa Tado sistemom. Pritisnite \u201ePo\u0161aljite\u201d da biste zapo\u010deli proces prijave.",
+                "title": "Prijava na Tado"
+            },
+            "reauth_confirm": {
+                "description": "Potrebno je da se ponovo prijavite na Tado. Pritisnite \u201ePotvrdi\u201d da biste zapo\u010deli proces prijave.",
+                "title": "Potvrdite identitet sa Tado"
+            },
+            "timeout": {
+                "description": "Proces prijave je istekao. Molimo vas da poku\u0161ate ponovo."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "connection_state": {
+                "name": "Stanje veze"
+            },
+            "early_start": {
+                "name": "Rani po\u010detak"
+            },
+            "overlay": {
+                "name": "Preklapanje"
+            }
+        },
+        "climate": {
+            "tado": {
+                "state_attributes": {
+                    "preset_mode": {
+                        "state": {
+                            "auto": "Automatski"
+                        }
+                    }
+                }
+            }
+        },
+        "select": {
+            "heating_circuit": {
+                "name": "Kolo grejanja",
+                "state": {
+                    "no_heating_circuit": "Nema strujnog kola"
+                }
+            }
+        },
+        "sensor": {
+            "ac": {
+                "name": "AC"
+            },
+            "automatic_geofencing": {
+                "name": "Automatska geoograda"
+            },
+            "geofencing_mode": {
+                "name": "Re\u017eim geoograde"
+            },
+            "heating": {
+                "name": "Grejanje"
+            },
+            "outdoor_temperature": {
+                "name": "Spolja\u0161nja temperatura"
+            },
+            "solar_percentage": {
+                "name": "Procenat solarne energije"
+            },
+            "tado_mode": {
+                "name": "Tado re\u017eim"
+            },
+            "weather_condition": {
+                "name": "Vremenski uslovi"
+            }
+        },
+        "switch": {
+            "child_lock": {
+                "name": "De\u010dija za\u0161tita"
+            }
+        }
+    },
+    "issues": {
+        "water_heater_fallback": {
+            "description": "Zbog dodate podr\u0161ke za entitete bojlera, ovi entiteti mogu koristiti druga\u010diji sloj. Molimo vas da konfiguri\u0161ete entitet integracije i opcije sloja zone bojlera u Tado aplikaciji (pod Pode\u0161avanja -> Sobe i ure\u0111aji -> Topla voda).",
+            "title": "Tado entiteti za greja\u010de vode sada podr\u017eavaju rezervne opcije (fallback)"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "fallback": "Izaberi re\u017eim za rezervu."
+                },
+                "description": "Re\u017eim povratka vam omogu\u0107ava da izaberete kada \u0107e se vratiti na Pametni raspored sa va\u0161eg ru\u010dnog preklapanja zone (NEXT_TIME_BLOCK := Promena pri slede\u0107oj promeni Pametnog rasporeda;  MANUAL := Ne menja se dok ne otka\u017eete; TADO_DEFAULT := Promena na osnovu pode\u0161avanja u Tado aplikaciji).",
+                "title": "Pode\u0161avanje Tado opcija."
+            }
+        }
+    },
+    "services": {
+        "add_meter_reading": {
+            "description": "Dodaje o\u010ditavanje brojila u Tado Energy IQ",
+            "fields": {
+                "config_entry": {
+                    "description": "Konfiguracioni unos za dodavanje o\u010ditavanja brojila.",
+                    "name": "Konfiguracioni unos"
+                },
+                "reading": {
+                    "description": "O\u010ditavanje u m\u00b3 ili kWh bez decimala.",
+                    "name": "O\u010ditavanje"
+                }
+            },
+            "name": "Dodajte o\u010ditavanje brojila"
+        },
+        "set_climate_temperature_offset": {
+            "description": "Postavlja odstupanje temperature klima ure\u0111aja.",
+            "fields": {
+                "offset": {
+                    "description": "\u017deljeno odstupanje, u zavisnosti od va\u0161eg ure\u0111aja.",
+                    "name": "Odstupanje"
+                }
+            },
+            "name": "Postavi odstupanje temperature klime"
+        },
+        "set_climate_timer": {
+            "description": "Uklju\u010duje ure\u0111aje za klimatizaciju na odre\u0111eno vreme.",
+            "fields": {
+                "requested_overlay": {
+                    "description": "Izaberite ovo ili \u201eVremenski period\u201d. Omogu\u0107ava vam da izaberete preklapanje (overlay). MANUAL:=Preklapanje dok ga korisnik ne ukloni; NEXT_TIME_BLOCK:=Preklapanje do slede\u0107eg vremenskog bloka; TADO_DEFAULT:=Preklapanje na osnovu pode\u0161avanja u Tado aplikaciji.",
+                    "name": "Preklapanje"
+                },
+                "temperature": {
+                    "description": "Temperatura na koju se pode\u0161ava klima ure\u0111aj.",
+                    "name": "Temperatura"
+                },
+                "time_period": {
+                    "description": "Izaberite ovo ili \u201ePreklapanje\u201d. Postavite vremenski period za promenu ako \u017eelite da budete precizni.",
+                    "name": "Vremenski period"
+                }
+            },
+            "name": "Postavi tajmer klime"
+        },
+        "set_water_heater_timer": {
+            "description": "Uklju\u010duje bojler na odre\u0111eno vreme.",
+            "fields": {
+                "temperature": {
+                    "description": "Temperatura na koju se pode\u0161ava greja\u010d.",
+                    "name": "Temperatura"
+                },
+                "time_period": {
+                    "description": "Postavi vremenski period za poja\u010danje",
+                    "name": "Vremenski period"
+                }
+            },
+            "name": "Postavi tajmer bojlera"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+.storage/
+secrets.yaml
+configuration.yaml
+home-assistant*.db*
+*.log
+*.tar
+*.tar.gz
+*.zip
+.DS_Store

@@ -1,0 +1,51 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Kontua dagoeneko konfiguratuta dago",
+            "cannot_connect": "Konexioak huts egin du",
+            "reauth_successful": "Berrautortzea arrakastatsua izan da",
+            "reconfigure_successful": "Birkonfigurazioa arrakastatsua izan da"
+        }
+    },
+    "entity": {
+        "climate": {
+            "tado": {
+                "state_attributes": {
+                    "preset_mode": {
+                        "state": {
+                            "auto": "Automatikoa"
+                        }
+                    }
+                }
+            }
+        },
+        "switch": {
+            "child_lock": {
+                "name": "Haur-blokeoa"
+            }
+        }
+    },
+    "services": {
+        "add_meter_reading": {
+            "fields": {
+                "reading": {
+                    "name": "Irakurtzen"
+                }
+            }
+        },
+        "set_climate_timer": {
+            "fields": {
+                "temperature": {
+                    "name": "Tenperatura"
+                }
+            }
+        },
+        "set_water_heater_timer": {
+            "fields": {
+                "temperature": {
+                    "name": "Tenperatura"
+                }
+            }
+        }
+    }
+}
