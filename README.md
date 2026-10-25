@@ -1,5 +1,7 @@
 # Tado X for Home Assistant
 
+[![Compatibility tests](https://github.com/zsozso/ha-tado-x/actions/workflows/tests.yml/badge.svg)](https://github.com/zsozso/ha-tado-x/actions/workflows/tests.yml)
+
 A custom override of the Home Assistant Tado integration with Tado X cloud API
 support. Based on the bundled **Home Assistant Core 2026.9.4** integration, with
 `python-tado==0.19.2` and custom component version `2026.9.4.1`.
@@ -74,6 +76,15 @@ docker run --rm --entrypoint sh \
 
 The dependency download requires internet access; the tests themselves make no
 Tado cloud calls. No Home Assistant configuration volume is mounted.
+
+## Continuous integration
+
+GitHub Actions runs the isolated compatibility tests on pushes to `main`, pull
+requests and manual dispatches. It uses a standard GitHub-hosted Linux runner,
+read-only repository permissions and no repository secrets or live HA data.
+CodeQL default setup provides Python security analysis and Copilot Autofix
+suggestions for supported findings. Suggestions require human review; no
+automatic merge or deployment is configured.
 
 ## Upgrades and rollback
 

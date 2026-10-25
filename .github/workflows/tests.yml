@@ -1,0 +1,31 @@
+name: Tado X compatibility tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preflight:
+    name: Home Assistant 2026.9.4 / Python 3.14
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Run isolated compatibility tests
+        run: |
+          docker run --rm --entrypoint sh \
+            -v "$GITHUB_WORKSPACE:/workspace:ro" -w /workspace \
+            ghcr.io/home-assistant/home-assistant:2026.9.4 \
+            -c 'pip install --target /tmp/tado-x-deps python-tado==0.19.2 && PYTHONPATH=/workspace:/tmp/tado-x-deps python -m unittest discover -s tests -v'
